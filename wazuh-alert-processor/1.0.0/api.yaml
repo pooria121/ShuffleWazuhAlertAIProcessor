@@ -1,6 +1,6 @@
 walkoff_version: 1.0.0
 app_version: 1.0.0
-name: wazuh-alert-processor
+name: wazuh-alert-processor2
 description: Processes Wazuh alerts by categorizing them and enriching with Claude AI analysis for analyst recommendations
 contact_info:
   name: Security Team
