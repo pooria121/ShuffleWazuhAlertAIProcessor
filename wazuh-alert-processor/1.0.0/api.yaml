@@ -1,0 +1,61 @@
+walkoff_version: 1.0.0
+app_version: 1.0.0
+name: wazuh-alert-processor
+description: Processes Wazuh alerts by categorizing them and enriching with Claude AI analysis for analyst recommendations
+contact_info:
+  name: Security Team
+  url: https://github.com/Shuffle/python-apps
+  email: security@shuffle.io
+license_info:
+  name: MIT
+  url: https://opensource.org/licenses/MIT
+actions:
+  - name: process_alert
+    description: Categorizes Wazuh alerts and enriches them with Claude AI analysis
+    parameters:
+      - name: alert_json
+        description: The Wazuh alert JSON object to process
+        required: true
+        multiline: true
+        example: |
+          {
+            "severity": 2,
+            "title": "PAM: User login failed.",
+            "rule_id": "5503",
+            "timestamp": "2025-08-28T00:24:20.173+0000",
+            "all_fields": {
+              "rule": {
+                "description": "PAM: User login failed.",
+                "groups": ["pam", "authentication_failed"],
+                "mitre": {
+                  "tactic": ["Credential Access"],
+                  "technique": ["Password Guessing"]
+                }
+              },
+              "agent": {
+                "name": "Rhea",
+                "ip": "158.69.210.76"
+              }
+            }
+          }
+        schema:
+          type: string
+      - name: claude_api_key
+        description: Your Claude API key for AI analysis
+        required: true
+        schema:
+          type: string
+    returns:
+      schema:
+        type: object
+        properties:
+          success:
+            type: boolean
+            description: Whether the processing was successful
+          enriched_alert:
+            type: string
+            description: The enriched alert JSON with category and Claude analysis
+          error:
+            type: string
+            description: Error message if processing failed
+large_image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==
