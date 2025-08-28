@@ -273,4 +273,4 @@ class WazuhAlertProcessor(AppBase):
 
 
 if __name__ == "__main__":
-    WazuhAlertProcessor.run()
+    WazuhAlertProcessor.run(host="0.0.0.0", port=33337)

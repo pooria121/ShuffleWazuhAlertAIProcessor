@@ -7,4 +7,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+EXPOSE 33337
+
 CMD ["python", "src/app.py"]
